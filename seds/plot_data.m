@@ -21,12 +21,14 @@ fields = fieldnames(channelstruct)
 sztwo = size(fields)
 sz = sztwo(1,1)
 tiledlayout(8,4)
+% plots columns 32-64, don't want to plot digital I/O data
 for x = 32:64
     % plot for channel data -> use available channelname!! (sine3
     %A101_2_AI2_bridge, ...)
     nexttile
     xl = "Timestamp";
     yl = fields{x,1};
+    % uses same x value for all plots, timestamp Xdata
     plot(channelstruct.(xl).XData,channelstruct.(yl).YData, 'LineWidth',2)
     grid on
     set(gca, 'FontSize', 12, 'FontName', 'Times')
